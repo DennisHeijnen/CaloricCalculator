@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CaloricCalculator</title>
+</head>
+<body>
+
+	
+	<select id="sex" name="sex">
+		<option id="male" value="Male">Male</option>
+		<option id="female" value="Female">Female</option>
+	</select>
+
+	<label for="bodyWeight">Weight:</label>
+    <input type="text" id="bodyWeight"/>
+
+    <label for="fatPercentage">Fat percentage:</label>
+    <input type="text" id="fatPercentage"/>
+
+    <select id="physicalActivityLevel" name="physicalActivityLevel">
+		<option id="one" value="one">Sedentair</option>
+		<option id="two" value="two">Beetje actief</option>
+		<option id="three" value="three">Actief</option>
+		<option id="four" value="four">Zeer actief</option>
+	</select>
+
+	<label for="trainingDays">Training days:</label>
+    <input type="text" id="trainingDays"/><br>
+
+    <button onclick="caloricCalculator()">Submit</button><br>
+
+	<span id="maintenanceLevel"></span><br>
+	<span id="cutCaloricIntake"></span><br>
+	<span id="bulkCaloricIntake"></span><br>
+
+	<script>
+		function caloricCalculator() {
+			var sexObj = document.getElementById('sex').value;
+			var bodyWeightObj = document.getElementById('bodyWeight').value;
+			var fatPercentageObj = document.getElementById('fatPercentage').value;
+			var physicalActivityLevelObj = document.getElementById('physicalActivityLevel').value;
+			var trainingDaysObj = document.getElementById('trainingDays').value;
+			var maintenanceLevelObj = document.getElementById('maintenanceLevel');
+			var cutCaloricIntakeObj = document.getElementById('cutCaloricIntake');
+			var bulkCaloricIntakeObj = document.getElementById('bulkCaloricIntake');
+
+			console.log(isNaN(fatPercentageObj));
+			if(isNaN(bodyWeightObj) || isNaN(fatPercentageObj) || isNaN(trainingDaysObj || trainingDaysObj < 0 || trainingDaysObj > 7 || fatPercentageObj > 100 || fatPercentageObj < 0 || bodyWeightObj < 1)) {
+		        alert('Invalid input');
+		        return;
+		    };
+
+			var fatFreeMass = bodyWeightObj * (1 - fatPercentageObj / 100);
+			var katchMcArdleBMR = 370 + (21.6 * fatFreeMass);
+
+			var physicalActivityLevelScore = 0;
+			if (sexObj == "Male") {
+				if (physicalActivityLevelObj == "one") {
+					physicalActivityLevelScore = 1;
+				}
+				if (physicalActivityLevelObj == "two") {
+					physicalActivityLevelScore = 1.11;
+				}
+				if (physicalActivityLevelObj == "three") {
+					physicalActivityLevelScore = 1.25;
+				}
+				if (physicalActivityLevelObj == "four") {
+					physicalActivityLevelScore = 1.48;
+				}
+			}
+			if (sexObj == "Female") {
+				if (physicalActivityLevelObj == "one") {
+					physicalActivityLevelScore = 1;
+				}
+				if (physicalActivityLevelObj == "two") {
+					physicalActivityLevelScore = 1.12;
+				}
+				if (physicalActivityLevelObj == "three") {
+					physicalActivityLevelScore = 1.27;
+				}
+				if (physicalActivityLevelObj == "four") {
+					physicalActivityLevelScore = 1.45;
+				}
+			}
+
+			var thermicEffectFood = 1.25;
+
+			var trainingDaysREE = (katchMcArdleBMR * physicalActivityLevelScore + (0.1 * bodyWeightObj * 45)) * thermicEffectFood;
+
+			var restdayREE = katchMcArdleBMR * physicalActivityLevelScore * thermicEffectFood;
+
+			var caloricEE = Math.round((trainingDaysObj / 7) * trainingDaysREE + ((7 - trainingDaysObj) / 7) * restdayREE);
+			maintenanceLevelObj.innerHTML = 'Maintenance: ' + caloricEE;
+
+			if (sexObj == 'Male' && fatPercentageObj <= 9 || sexObj == 'Female' && fatPercentageObj <= 14) {
+				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.975 * caloricEE) + ' and ' + Math.round(0.925 * caloricEE);
+			}
+			if (sexObj == 'Male' && fatPercentageObj > 9 && fatPercentageObj < 15 || sexObj == 'Female' && fatPercentageObj > 13 && fatPercentageObj < 24) {
+				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.95 * caloricEE) + ' and ' + Math.round(0.8 * caloricEE);
+			}
+			if (sexObj == 'Male' && fatPercentageObj > 14 && fatPercentageObj < 21 || sexObj == 'Female' && fatPercentageObj > 23 && fatPercentageObj < 33) {
+				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.8 * caloricEE) + ' and ' + Math.round(0.6 * caloricEE);
+			}
+			if (sexObj == 'Male' && fatPercentageObj > 20 && fatPercentageObj < 26 || sexObj == 'Female' && fatPercentageObj > 32 && fatPercentageObj < 39) {
+				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.7 * caloricEE) + ' and ' + Math.round(0.5 * caloricEE);
+			}
+			if (sexObj == 'Male' && fatPercentageObj > 26 || sexObj == 'Female' && fatPercentageObj > 39) {
+				cutCaloricIntakeObj.innerHTML = 'Cut: As less as possible';
+			}
+
+			if (sexObj == 'Male' && fatPercentageObj < 18 || sexObj == 'Female' && fatPercentageObj < 29) {
+				bulkCaloricIntakeObj.innerHTML = 'Bulk: between ' + Math.round(1.05 * caloricEE) + ' and ' + Math.round(1.15 * caloricEE);
+			}
+		}
+	</script>
+</body>
+</html>
