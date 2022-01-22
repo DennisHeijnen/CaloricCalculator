@@ -50,14 +50,22 @@
     <button onclick="caloricCalculator()">Submit</button><br>
 
 	<span id="maintenanceLevel"></span><br>
+	<span id="proteinIntakeMaintenance"></span><br>
+	<span id="carbohydrateIntakeMaintenance"></span><br>
+	<span id="fatIntakeMaintenance"></span><br>
 	<span id="cutCaloricIntake"></span><br>
+	<span id="proteinIntakeCut"></span><br>
+	<span id="carbohydrateIntakeCut"></span><br>
+	<span id="fatIntakeCut"></span><br>
 	<span id="bulkCaloricIntake"></span><br>
-	<span id="proteinIntake"></span><br>
-	<span id="carbohydrateIntake"></span><br>
-	<span id="fatIntake"></span><br>
+	<span id="proteinIntakeBulk"></span><br>
+	<span id="carbohydrateIntakeBulk"></span><br>
+	<span id="fatIntakeBulk"></span><br>
+	
 
 	<script>
 		function caloricCalculator() {
+			//Define input variables
 			var sexObj = document.getElementById('sex').value;
 			var bodyWeightObj = document.getElementById('bodyWeight').value;
 			var fatPercentageObj = document.getElementById('fatPercentage').value;
@@ -67,21 +75,33 @@
 			var trainingTimeObj = document.getElementById('trainingTime').value;
 			var experienceLevelObj = document.getElementById('experienceLevel').value;
 
+			//Define caloric intake variables
 			var maintenanceLevelObj = document.getElementById('maintenanceLevel');
 			var cutCaloricIntakeObj = document.getElementById('cutCaloricIntake');
 			var bulkCaloricIntakeObj = document.getElementById('bulkCaloricIntake');
-			var proteinIntakeObj = document.getElementById('proteinIntake');
-			var carbohydrateIntakeObj = document.getElementById('carbohydrateIntake');
-			var fatIntakeObj = document.getElementById('fatIntake');
 
+			//Define macro variables
+			var proteinIntakeMaintenanceObj = document.getElementById('proteinIntakeMaintenance');
+			var carbohydrateIntakeMaintenanceObj = document.getElementById('carbohydrateIntakeMaintenance');
+			var fatIntakeMaintenanceObj = document.getElementById('fatIntakeMaintenance');
+			var proteinIntakeCutObj = document.getElementById('proteinIntakeCut');
+			var carbohydrateIntakeCutObj = document.getElementById('carbohydrateIntakeCut');
+			var fatIntakeCutObj = document.getElementById('fatIntakeCut');
+			var proteinIntakeBulkObj = document.getElementById('proteinIntakeBulk');
+			var carbohydrateIntakeBulkObj = document.getElementById('carbohydrateIntakeBulk');
+			var fatIntakeBulkObj = document.getElementById('fatIntakeBulk');
+
+			//Error handling
 			if(isNaN(bodyWeightObj) || isNaN(fatPercentageObj) || isNaN(trainingDaysObj || trainingDaysObj < 0 || trainingDaysObj > 7 || fatPercentageObj > 100 || fatPercentageObj < 0 || bodyWeightObj < 1)) {
 		        alert('Invalid input');
 		        return;
 		    };
 
+		    //Calculate BMR
 			var fatFreeMass = bodyWeightObj * (1 - fatPercentageObj / 100);
 			var katchMcArdleBMR = 370 + (21.6 * fatFreeMass);
 
+			//Assign PAL score
 			var physicalActivityLevelScore = 0;
 			if (sexObj == "Male") {
 				if (physicalActivityLevelObj == "one") {
@@ -112,6 +132,7 @@
 				}
 			}
 
+			//Assign TEF score
 			var thermicEffectFoodScore = 0;
 			if (thermicEffectFoodObj == "ten") {
 				thermicEffectFoodScore = 1.1;
@@ -126,32 +147,42 @@
 				thermicEffectFoodScore = 1.25;
 			}
 
-
-
+			//Calculate caloric maintenance intake
 			var trainingDaysREE = (katchMcArdleBMR * physicalActivityLevelScore + (0.1 * bodyWeightObj * trainingTimeObj)) * thermicEffectFoodScore;
 
 			var restdayREE = katchMcArdleBMR * physicalActivityLevelScore * thermicEffectFoodScore;
 
 			var caloricEE = Math.round((trainingDaysObj / 7) * trainingDaysREE + ((7 - trainingDaysObj) / 7) * restdayREE);
 
+			//Calculate caloric cut intake
+			//TODO
+			//return cutCaloricIntakeScore
+
+			//Calculate caloric bulk intake
+			//TODO
+			//return bulkCaloricIntakeScore
+
+			//Print caloric maintenance intake
 			maintenanceLevelObj.innerHTML = 'Maintenance: ' + caloricEE;
 
+			//Print caloric cut intake
 			if (sexObj == 'Male' && fatPercentageObj <= 9 || sexObj == 'Female' && fatPercentageObj <= 14) {
-				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.975 * caloricEE) + ' and ' + Math.round(0.925 * caloricEE);
+				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.925 * caloricEE) + ' and ' + Math.round(0.975 * caloricEE);
 			}
 			if (sexObj == 'Male' && fatPercentageObj > 9 && fatPercentageObj < 15 || sexObj == 'Female' && fatPercentageObj > 13 && fatPercentageObj < 24) {
-				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.95 * caloricEE) + ' and ' + Math.round(0.8 * caloricEE);
+				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.8 * caloricEE) + ' and ' + Math.round(0.95 * caloricEE);
 			}
 			if (sexObj == 'Male' && fatPercentageObj > 14 && fatPercentageObj < 21 || sexObj == 'Female' && fatPercentageObj > 23 && fatPercentageObj < 33) {
-				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.8 * caloricEE) + ' and ' + Math.round(0.6 * caloricEE);
+				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.6 * caloricEE) + ' and ' + Math.round(0.8 * caloricEE);
 			}
 			if (sexObj == 'Male' && fatPercentageObj > 20 && fatPercentageObj < 26 || sexObj == 'Female' && fatPercentageObj > 32 && fatPercentageObj < 39) {
-				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.7 * caloricEE) + ' and ' + Math.round(0.5 * caloricEE);
+				cutCaloricIntakeObj.innerHTML = 'Cut: between '+ Math.round(0.5 * caloricEE) + ' and ' + Math.round(0.7 * caloricEE);
 			}
 			if (sexObj == 'Male' && fatPercentageObj > 26 || sexObj == 'Female' && fatPercentageObj > 39) {
 				cutCaloricIntakeObj.innerHTML = 'Cut: As less as possible';
 			}
 
+			//Print caloric bulk intake
 			if (sexObj == 'Male' && fatPercentageObj < 18 || sexObj == 'Female' && fatPercentageObj < 29) {
 				if (experienceLevelObj == 'beginner') {
 					bulkCaloricIntakeObj.innerHTML = 'Bulk: between ' + Math.round(1.05 * caloricEE) + ' and ' + Math.round(1.15 * caloricEE);
@@ -164,15 +195,47 @@
 				}
 			}
 
-			proteinIntakeScore = 1.6 * bodyWeightObj;
-			fatIntakeScore = ((0.3 * caloricEE) / 9);
-			carbohydrateIntakeScore = (caloricEE - proteinIntakeScore * 4 - fatIntakeScore * 9) / 4;
-			
+			//Calculate maintenance macro's
+			proteinIntakeScoreMaintenance = 1.8 * bodyWeightObj;
 			if (sexObj == 'Male') {
-				proteinIntake.innerHTML = 'Protein: ' + Math.round(proteinIntakeScore) + ' gram';
-				fatIntake.innerHTML = 'Fat: ' + Math.round(fatIntakeScore) + ' gram';
-				carbohydrateIntake.innerHTML = 'Carbohydrates: ' + Math.round(carbohydrateIntakeScore)  + ' gram';
+				fatIntakeScoreMaintenance = ((0.3 * caloricEE) / 9);
+			} else {
+				fatIntakeScoreMaintenance = ((0.4 * caloricEE) / 9);
 			}
+			carbohydrateIntakeScoreMaintenance = (caloricEE - proteinIntakeScoreMaintenance * 4 - fatIntakeScoreMaintenance * 9) / 4;
+
+			//Calculate cut macro's
+			proteinIntakeScoreCut = 1.8 * bodyWeightObj;
+			if (sexObj == 'Male') {
+				fatIntakeScoreCut = ((0.3 * cutCaloricIntakeScore) / 9);
+			} else {
+				fatIntakeScoreCut = ((0.4 * cutCaloricIntakeScore) / 9);
+			}
+			carbohydrateIntakeScoreCut = (cutCaloricIntakeScore - proteinIntakeScoreCut * 4 - fatIntakeScoreCut * 9) / 4;
+
+			//Calculate bulk macro's
+			proteinIntakeScoreBulk = 1.8 * bodyWeightObj;
+			if (sexObj == 'Male') {
+				fatIntakeScoreBulk = ((0.3 * bulkCaloricIntakeScore) / 9);
+			} else {
+				fatIntakeScoreBulk = ((0.4 * bulkCaloricIntakeScore) / 9);
+			}
+			carbohydrateIntakeScoreBulk = (bulkCaloricIntakeScore - proteinIntakeScoreBulk * 4 - fatIntakeScoreBulk * 9) / 4;
+
+			//Print maintenance macro's
+			proteinIntakeMaintenanceObj.innerHTML = 'Protein: ' + Math.round(proteinIntakeScoreMaintenance) + ' gram';
+			fatIntakeMaintenanceObj.innerHTML = 'Fat: ' + Math.round(fatIntakeScoreMaintenance) + ' gram';
+			carbohydrateIntakeMaintenanceObj.innerHTML = 'Carbohydrates: ' + Math.round(carbohydrateIntakeScoreMaintenance)  + ' gram';
+
+			//Print cut macro's
+			proteinIntakeCutObj.innerHTML = 'Protein: ' + Math.round(proteinIntakeScoreCut) + ' gram';
+			fatIntakeCutObj.innerHTML = 'Fat: ' + Math.round(fatIntakeScoreCut) + ' gram';
+			carbohydrateIntakeCutObj.innerHTML = 'Carbohydrates: ' + Math.round(carbohydrateIntakeScoreCut)  + ' gram';
+
+			//Print bulk macro's
+			proteinIntakeBulkObj.innerHTML = 'Protein: ' + Math.round(proteinIntakeScoreBulk) + ' gram';
+			fatIntakeBulkObj.innerHTML = 'Fat: ' + Math.round(fatIntakeScoreBulk) + ' gram';
+			carbohydrateIntakeBulkObj.innerHTML = 'Carbohydrates: ' + Math.round(carbohydrateIntakeScoreBulk)  + ' gram';
 		}
 	</script>
 </body>
