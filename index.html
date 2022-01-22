@@ -17,6 +17,15 @@
     <label for="fatPercentage">Fat percentage:</label>
     <input type="text" id="fatPercentage"/>
 
+    <label for="thermicEffectFood">TEF:</label>
+    <select id="thermicEffectFood" name="thermicEffectFood">
+		<option id="ten" value="ten">10%</option>
+		<option id="fifteen" value="fifteen">15%</option>
+		<option id="twenty" value="twenty">20%</option>
+		<option id="twentyfive" value="twentyfive">25%</option>
+	</select>
+
+	<label for="physicalActivityLevel">Activity level:</label>
     <select id="physicalActivityLevel" name="physicalActivityLevel">
 		<option id="one" value="one">Sedentair</option>
 		<option id="two" value="two">Beetje actief</option>
@@ -24,8 +33,12 @@
 		<option id="four" value="four">Zeer actief</option>
 	</select>
 
+
 	<label for="trainingDays">Training days:</label>
     <input type="text" id="trainingDays"/><br>
+
+    <label for="trainingTime">Minutes per training:</label>
+    <input type="text" id="trainingTime">
 
     <button onclick="caloricCalculator()">Submit</button><br>
 
@@ -38,13 +51,15 @@
 			var sexObj = document.getElementById('sex').value;
 			var bodyWeightObj = document.getElementById('bodyWeight').value;
 			var fatPercentageObj = document.getElementById('fatPercentage').value;
+			var thermicEffectFoodObj = document.getElementById('thermicEffectFood').value;
 			var physicalActivityLevelObj = document.getElementById('physicalActivityLevel').value;
 			var trainingDaysObj = document.getElementById('trainingDays').value;
+			var trainingTimeObj = document.getElementById('trainingTime').value;
+
 			var maintenanceLevelObj = document.getElementById('maintenanceLevel');
 			var cutCaloricIntakeObj = document.getElementById('cutCaloricIntake');
 			var bulkCaloricIntakeObj = document.getElementById('bulkCaloricIntake');
 
-			console.log(isNaN(fatPercentageObj));
 			if(isNaN(bodyWeightObj) || isNaN(fatPercentageObj) || isNaN(trainingDaysObj || trainingDaysObj < 0 || trainingDaysObj > 7 || fatPercentageObj > 100 || fatPercentageObj < 0 || bodyWeightObj < 1)) {
 		        alert('Invalid input');
 		        return;
@@ -83,13 +98,27 @@
 				}
 			}
 
-			var thermicEffectFood = 1.25;
+			var thermicEffectFoodScore = 0;
+			if (thermicEffectFoodObj == "ten") {
+				thermicEffectFoodScore = 1.1;
+			}
+			if (thermicEffectFoodObj == "fifteen") {
+				thermicEffectFoodScore = 1.15;
+			}
+			if (thermicEffectFoodObj == "twenty") {
+				thermicEffectFoodScore = 1.2;
+			}
+			if (thermicEffectFoodObj == "twentyfive") {
+				thermicEffectFoodScore = 1.25;
+			}
 
-			var trainingDaysREE = (katchMcArdleBMR * physicalActivityLevelScore + (0.1 * bodyWeightObj * 45)) * thermicEffectFood;
+			console.log(thermicEffectFoodScore, trainingTimeObj, fatPercentageObj);
+			var trainingDaysREE = (katchMcArdleBMR * physicalActivityLevelScore + (0.1 * bodyWeightObj * trainingTimeObj)) * thermicEffectFoodScore;
 
-			var restdayREE = katchMcArdleBMR * physicalActivityLevelScore * thermicEffectFood;
+			var restdayREE = katchMcArdleBMR * physicalActivityLevelScore * thermicEffectFoodScore;
 
 			var caloricEE = Math.round((trainingDaysObj / 7) * trainingDaysREE + ((7 - trainingDaysObj) / 7) * restdayREE);
+
 			maintenanceLevelObj.innerHTML = 'Maintenance: ' + caloricEE;
 
 			if (sexObj == 'Male' && fatPercentageObj <= 9 || sexObj == 'Female' && fatPercentageObj <= 14) {
