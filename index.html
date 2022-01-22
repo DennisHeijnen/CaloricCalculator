@@ -52,6 +52,9 @@
 	<span id="maintenanceLevel"></span><br>
 	<span id="cutCaloricIntake"></span><br>
 	<span id="bulkCaloricIntake"></span><br>
+	<span id="proteinIntake"></span><br>
+	<span id="carbohydrateIntake"></span><br>
+	<span id="fatIntake"></span><br>
 
 	<script>
 		function caloricCalculator() {
@@ -67,6 +70,9 @@
 			var maintenanceLevelObj = document.getElementById('maintenanceLevel');
 			var cutCaloricIntakeObj = document.getElementById('cutCaloricIntake');
 			var bulkCaloricIntakeObj = document.getElementById('bulkCaloricIntake');
+			var proteinIntakeObj = document.getElementById('proteinIntake');
+			var carbohydrateIntakeObj = document.getElementById('carbohydrateIntake');
+			var fatIntakeObj = document.getElementById('fatIntake');
 
 			if(isNaN(bodyWeightObj) || isNaN(fatPercentageObj) || isNaN(trainingDaysObj || trainingDaysObj < 0 || trainingDaysObj > 7 || fatPercentageObj > 100 || fatPercentageObj < 0 || bodyWeightObj < 1)) {
 		        alert('Invalid input');
@@ -156,6 +162,16 @@
 				if (experienceLevelObj == 'advanced') {
 					bulkCaloricIntakeObj.innerHTML = 'Bulk: between ' + Math.round(1.01 * caloricEE) + ' and ' + Math.round(1.03 * caloricEE);
 				}
+			}
+
+			proteinIntakeScore = 1.6 * bodyWeightObj;
+			fatIntakeScore = ((0.3 * caloricEE) / 9);
+			carbohydrateIntakeScore = (caloricEE - proteinIntakeScore * 4 - fatIntakeScore * 9) / 4;
+			
+			if (sexObj == 'Male') {
+				proteinIntake.innerHTML = 'Protein: ' + Math.round(proteinIntakeScore) + ' gram';
+				fatIntake.innerHTML = 'Fat: ' + Math.round(fatIntakeScore) + ' gram';
+				carbohydrateIntake.innerHTML = 'Carbohydrates: ' + Math.round(carbohydrateIntakeScore)  + ' gram';
 			}
 		}
 	</script>
