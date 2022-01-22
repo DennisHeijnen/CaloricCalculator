@@ -40,6 +40,13 @@
     <label for="trainingTime">Minutes per training:</label>
     <input type="text" id="trainingTime">
 
+    <label for="experienceLevel">Experience level:</label>
+    <select id="experienceLevel" name="experienceLevel">
+		<option id="beginner" value="beginner">Beginner</option>
+		<option id="intermediate" value="intermediate">Intermediate</option>
+		<option id="advanced" value="advanced">Advanced</option>
+	</select>
+
     <button onclick="caloricCalculator()">Submit</button><br>
 
 	<span id="maintenanceLevel"></span><br>
@@ -55,6 +62,7 @@
 			var physicalActivityLevelObj = document.getElementById('physicalActivityLevel').value;
 			var trainingDaysObj = document.getElementById('trainingDays').value;
 			var trainingTimeObj = document.getElementById('trainingTime').value;
+			var experienceLevelObj = document.getElementById('experienceLevel').value;
 
 			var maintenanceLevelObj = document.getElementById('maintenanceLevel');
 			var cutCaloricIntakeObj = document.getElementById('cutCaloricIntake');
@@ -112,7 +120,8 @@
 				thermicEffectFoodScore = 1.25;
 			}
 
-			console.log(thermicEffectFoodScore, trainingTimeObj, fatPercentageObj);
+
+
 			var trainingDaysREE = (katchMcArdleBMR * physicalActivityLevelScore + (0.1 * bodyWeightObj * trainingTimeObj)) * thermicEffectFoodScore;
 
 			var restdayREE = katchMcArdleBMR * physicalActivityLevelScore * thermicEffectFoodScore;
@@ -138,7 +147,15 @@
 			}
 
 			if (sexObj == 'Male' && fatPercentageObj < 18 || sexObj == 'Female' && fatPercentageObj < 29) {
-				bulkCaloricIntakeObj.innerHTML = 'Bulk: between ' + Math.round(1.05 * caloricEE) + ' and ' + Math.round(1.15 * caloricEE);
+				if (experienceLevelObj == 'beginner') {
+					bulkCaloricIntakeObj.innerHTML = 'Bulk: between ' + Math.round(1.05 * caloricEE) + ' and ' + Math.round(1.15 * caloricEE);
+				}
+				if (experienceLevelObj == 'intermediate') {
+					bulkCaloricIntakeObj.innerHTML = 'Bulk: between ' + Math.round(1.02 * caloricEE) + ' and ' + Math.round(1.07 * caloricEE);
+				}
+				if (experienceLevelObj == 'advanced') {
+					bulkCaloricIntakeObj.innerHTML = 'Bulk: between ' + Math.round(1.01 * caloricEE) + ' and ' + Math.round(1.03 * caloricEE);
+				}
 			}
 		}
 	</script>
