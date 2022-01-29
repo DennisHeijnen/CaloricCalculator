@@ -57,7 +57,7 @@
 		}
 
 		#output-form {
-			visibility: hidden;
+			display: none;
 		}
 
 		input[type=text], select {
@@ -65,9 +65,11 @@
 			padding: 12px 20px;
 			margin: 8px 0;
 			display: inline-block;
-			border: 1px solid #ccc;
+			border: 3px solid #fff;
 			border-radius: 4px;
 			box-sizing: border-box;
+			color: #fff;
+			background-color: black;
 		}
 
 		input[type=button] {
@@ -83,6 +85,15 @@
 
 		.calculationClass {
 			margin-bottom: 20px;
+		}
+
+		.btnHolder {
+			text-align: center;
+		}
+
+		.stateHeader {
+			font-weight: bold;
+			font-size: 20px;
 		}
 	</style>
 </head>
@@ -142,7 +153,9 @@
 				<option id="advanced" value="advanced">Advanced</option>
 			</select>
 
-			<input type="button" value="Calculate" onclick="return caloricCalculator();">
+			<div class="btnHolder">
+				<input type="button" value="Calculate" onclick="return caloricCalculator();">
+			</div>
 		</form>
 	</div>
 
@@ -164,6 +177,9 @@
 			<span id="proteinIntakeBulk"></span><br>
 			<span id="carbohydrateIntakeBulk"></span><br>
 			<span id="fatIntakeBulk"></span><br>
+		</div>
+		<div class="btnHolder">
+			<input type="button" value="Re-calculate" onclick="return returnToHomePage();">
 		</div>
 	</div>
 
@@ -302,13 +318,13 @@
 
 
 			//Print caloric maintenance intake
-			maintenanceLevelObj.innerHTML = 'Maintenance<br> Calories: ' + caloricEE + ' kCal';
+			maintenanceLevelObj.innerHTML = '<span class="stateHeader">Maintenance</span><br> Calories: ' + caloricEE + ' kCal';
 
 			//Print caloric cut intake
-			cutCaloricIntakeObj.innerHTML = 'Cut<br> Calories: between ' + cutCaloricIntakeScoreLower + ' and ' + cutCaloricIntakeScoreUpper + ' kCal';
+			cutCaloricIntakeObj.innerHTML = '<span class="stateHeader">Cut</span><br> Calories: between ' + cutCaloricIntakeScoreLower + ' and ' + cutCaloricIntakeScoreUpper + ' kCal';
 
 			//Print caloric bulk intake
-			bulkCaloricIntakeObj.innerHTML = 'Bulk<br> Calories: between ' + bulkCaloricIntakeScoreLower + ' and ' + bulkCaloricIntakeScoreUpper + ' kCal';
+			bulkCaloricIntakeObj.innerHTML = '<span class="stateHeader">Bulk</span><br> Calories: between ' + bulkCaloricIntakeScoreLower + ' and ' + bulkCaloricIntakeScoreUpper + ' kCal';
 
 
 			//Calculate maintenance macro's
@@ -359,13 +375,13 @@
 			fatIntakeBulkObj.innerHTML = 'Fat: between ' + Math.round(fatIntakeScoreBulkLower) +  ' and ' + Math.round(fatIntakeScoreBulkUpper) + ' gram';
 			carbohydrateIntakeBulkObj.innerHTML = 'Carbohydrates: between ' + Math.round(carbohydrateIntakeScoreBulkLower)  + ' and ' + Math.round(carbohydrateIntakeScoreBulkUpper) + ' gram';
 
-			var x = document.getElementById("input-form");
-			if (x.style.display === "none") {
-				x.style.display = "block";
-			} else {
-				x.style.display = "none";
-			}
-			document.getElementById("output-form").style.visibility = 'visible';
+			document.getElementById("input-form").style.display = 'none';
+			document.getElementById("output-form").style.display = 'block';
+		}
+
+		function returnToHomePage() {
+			document.getElementById("input-form").style.display = 'block';
+			document.getElementById("output-form").style.display = 'none';
 		}
 	</script>
 </body>
