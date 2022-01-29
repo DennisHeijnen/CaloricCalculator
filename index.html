@@ -215,10 +215,22 @@
 			var fatIntakeBulkObj = document.getElementById('fatIntakeBulk');
 
 			//Error handling
-			if(isNaN(bodyWeightObj) || isNaN(fatPercentageObj) || isNaN(trainingDaysObj || trainingDaysObj < 0 || trainingDaysObj > 7 || fatPercentageObj > 100 || fatPercentageObj < 0 || bodyWeightObj < 1)) {
-		        alert('Invalid input');
+			if(bodyWeightObj.length === 0 || fatPercentageObj.length === 0 || trainingDaysObj.length === 0 || trainingTimeObj.length === 0) {
+		        alert('Input forgotten');
 		        return;
 		    };
+		    if (trainingDaysObj < 0 || trainingDaysObj > 7) {
+		    	alert('Number of training days not valid');
+		        return;
+		    }
+		    if (fatPercentageObj < 0 || fatPercentageObj > 100) {
+		    	alert('Fat percentage not valid');
+		        return;
+		    }
+		    if (bodyWeightObj < 1) {
+		    	alert('Body weight not valid');
+		        return;
+		    }
 
 		    //Calculate BMR
 			var fatFreeMass = bodyWeightObj * (1 - fatPercentageObj / 100);
