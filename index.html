@@ -45,6 +45,45 @@
 		.topnav-right {
 		  	float: right;
 		}
+
+		.input-form-container, .output-form-container {
+			margin: auto;
+			margin-top: 20px;
+			border-radius: 5px;
+			background-color: black;
+			color: #fff;
+			padding: 20px;
+			width: 50%;
+		}
+
+		#output-form {
+			visibility: hidden;
+		}
+
+		input[type=text], select {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		input[type=button] {
+			width: 50%;
+			background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+			color: #fff;
+			padding: 14px 20px;
+			margin: 8px auto;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		.calculationClass {
+			margin-bottom: 20px;
+		}
 	</style>
 </head>
 <body>
@@ -58,63 +97,76 @@
 			<a href="contact.html">Contact</a>
 		</div>
 	</div>
-	
-	<select id="sex" name="sex">
-		<option id="male" value="Male">Male</option>
-		<option id="female" value="Female">Female</option>
-	</select>
 
-	<label for="bodyWeight">Weight:</label>
-    <input type="text" id="bodyWeight"/>
+	<div id="input-form" class="input-form-container">
+		<form>
+			<label for="sex">Sex:</label>
+			<select id="sex" name="sex">
+				<option id="male" value="Male">Male</option>
+				<option id="female" value="Female">Female</option>
+			</select>
 
-    <label for="fatPercentage">Fat percentage:</label>
-    <input type="text" id="fatPercentage"/>
+			<label for="bodyWeight">Weight:</label>
+			<input type="text" id="bodyWeight"/>
 
-    <label for="thermicEffectFood">TEF:</label>
-    <select id="thermicEffectFood" name="thermicEffectFood">
-		<option id="ten" value="ten">10%</option>
-		<option id="fifteen" value="fifteen">15%</option>
-		<option id="twenty" value="twenty">20%</option>
-		<option id="twentyfive" value="twentyfive">25%</option>
-	</select>
+			<label for="fatPercentage">Fat percentage:</label>
+			<input type="text" id="fatPercentage"/>
 
-	<label for="physicalActivityLevel">Activity level:</label>
-    <select id="physicalActivityLevel" name="physicalActivityLevel">
-		<option id="one" value="one">Sedentair</option>
-		<option id="two" value="two">Beetje actief</option>
-		<option id="three" value="three">Actief</option>
-		<option id="four" value="four">Zeer actief</option>
-	</select>
+			<label for="thermicEffectFood">TEF:</label>
+			<select id="thermicEffectFood" name="thermicEffectFood">
+				<option id="ten" value="ten">10%</option>
+				<option id="fifteen" value="fifteen">15%</option>
+				<option id="twenty" value="twenty">20%</option>
+				<option id="twentyfive" value="twentyfive">25%</option>
+			</select>
+
+			<label for="physicalActivityLevel">Activity level:</label>
+			<select id="physicalActivityLevel" name="physicalActivityLevel">
+				<option id="one" value="one">Sedentair</option>
+				<option id="two" value="two">Beetje actief</option>
+				<option id="three" value="three">Actief</option>
+				<option id="four" value="four">Zeer actief</option>
+			</select>
 
 
-	<label for="trainingDays">Training days:</label>
-    <input type="text" id="trainingDays"/><br>
+			<label for="trainingDays">Training days:</label>
+			<input type="text" id="trainingDays"/><br>
 
-    <label for="trainingTime">Minutes per training:</label>
-    <input type="text" id="trainingTime">
+			<label for="trainingTime">Minutes per training:</label>
+			<input type="text" id="trainingTime">
 
-    <label for="experienceLevel">Experience level:</label>
-    <select id="experienceLevel" name="experienceLevel">
-		<option id="beginner" value="beginner">Beginner</option>
-		<option id="intermediate" value="intermediate">Intermediate</option>
-		<option id="advanced" value="advanced">Advanced</option>
-	</select>
+			<label for="experienceLevel">Experience level:</label>
+			<select id="experienceLevel" name="experienceLevel">
+				<option id="beginner" value="beginner">Beginner</option>
+				<option id="intermediate" value="intermediate">Intermediate</option>
+				<option id="advanced" value="advanced">Advanced</option>
+			</select>
 
-    <button onclick="caloricCalculator()">Submit</button><br>
+			<input type="button" value="Calculate" onclick="return caloricCalculator();">
+		</form>
+	</div>
 
-	<span id="maintenanceLevel"></span><br>
-	<span id="proteinIntakeMaintenance"></span><br>
-	<span id="carbohydrateIntakeMaintenance"></span><br>
-	<span id="fatIntakeMaintenance"></span><br>
-	<span id="cutCaloricIntake"></span><br>
-	<span id="proteinIntakeCut"></span><br>
-	<span id="carbohydrateIntakeCut"></span><br>
-	<span id="fatIntakeCut"></span><br>
-	<span id="bulkCaloricIntake"></span><br>
-	<span id="proteinIntakeBulk"></span><br>
-	<span id="carbohydrateIntakeBulk"></span><br>
-	<span id="fatIntakeBulk"></span><br>
-	
+	<div id="output-form" class="output-form-container">
+		<div class="calculationClass">
+			<span id="maintenanceLevel"></span><br>
+			<span id="proteinIntakeMaintenance"></span><br>
+			<span id="carbohydrateIntakeMaintenance"></span><br>
+			<span id="fatIntakeMaintenance"></span><br>
+		</div>
+		<div class="calculationClass">
+			<span id="cutCaloricIntake"></span><br>
+			<span id="proteinIntakeCut"></span><br>
+			<span id="carbohydrateIntakeCut"></span><br>
+			<span id="fatIntakeCut"></span><br>
+		</div>
+		<div class="calculationClass">
+			<span id="bulkCaloricIntake"></span><br>
+			<span id="proteinIntakeBulk"></span><br>
+			<span id="carbohydrateIntakeBulk"></span><br>
+			<span id="fatIntakeBulk"></span><br>
+		</div>
+	</div>
+
 
 	<script>
 		function caloricCalculator() {
@@ -250,13 +302,13 @@
 
 
 			//Print caloric maintenance intake
-			maintenanceLevelObj.innerHTML = 'Maintenance: ' + caloricEE;
+			maintenanceLevelObj.innerHTML = 'Maintenance<br> Calories: ' + caloricEE + ' kCal';
 
 			//Print caloric cut intake
-			cutCaloricIntakeObj.innerHTML = 'Cut: between ' + cutCaloricIntakeScoreLower + ' and ' + cutCaloricIntakeScoreUpper;
+			cutCaloricIntakeObj.innerHTML = 'Cut<br> Calories: between ' + cutCaloricIntakeScoreLower + ' and ' + cutCaloricIntakeScoreUpper + ' kCal';
 
 			//Print caloric bulk intake
-			bulkCaloricIntakeObj.innerHTML = 'Bulk: between ' + bulkCaloricIntakeScoreLower + ' and ' + bulkCaloricIntakeScoreUpper;
+			bulkCaloricIntakeObj.innerHTML = 'Bulk<br> Calories: between ' + bulkCaloricIntakeScoreLower + ' and ' + bulkCaloricIntakeScoreUpper + ' kCal';
 
 
 			//Calculate maintenance macro's
@@ -306,6 +358,14 @@
 			proteinIntakeBulkObj.innerHTML = 'Protein: ' + Math.round(proteinIntakeScoreBulk) + ' gram';
 			fatIntakeBulkObj.innerHTML = 'Fat: between ' + Math.round(fatIntakeScoreBulkLower) +  ' and ' + Math.round(fatIntakeScoreBulkUpper) + ' gram';
 			carbohydrateIntakeBulkObj.innerHTML = 'Carbohydrates: between ' + Math.round(carbohydrateIntakeScoreBulkLower)  + ' and ' + Math.round(carbohydrateIntakeScoreBulkUpper) + ' gram';
+
+			var x = document.getElementById("input-form");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			document.getElementById("output-form").style.visibility = 'visible';
 		}
 	</script>
 </body>
