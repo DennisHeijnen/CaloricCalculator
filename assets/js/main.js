@@ -208,3 +208,19 @@
 			document.getElementById("input-form").style.display = 'block';
 			document.getElementById("output-form").style.display = 'none';
 		}
+
+		function submitForm (){
+			var fnameObj = document.getElementById("fname").value;
+			var lnameObj = document.getElementById("lname").value;
+			var subjectObj = document.getElementById("subject").value;
+
+			//Error handling
+			if(fnameObj.length === 0 || lnameObj.length === 0 || subjectObj.length === 0) {
+		        alert('Input forgotten');
+		        return;
+		    };
+
+		    //Show thank you message
+		    document.getElementById("input-form").style.display = 'none';
+			document.getElementById("output-form").style.display = 'block';
+		}
