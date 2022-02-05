@@ -209,7 +209,7 @@
 			document.getElementById("output-form").style.display = 'none';
 		}
 
-		function submitForm (){
+		function submitForm() {
 			var fnameObj = document.getElementById("fname").value;
 			var lnameObj = document.getElementById("lname").value;
 			var subjectObj = document.getElementById("subject").value;
@@ -223,4 +223,13 @@
 		    //Show thank you message
 		    document.getElementById("input-form").style.display = 'none';
 			document.getElementById("output-form").style.display = 'block';
+		}
+
+		function showMenu() {
+			var linksObj = document.getElementById("mobile-links");
+			if (linksObj.style.display === 'block') {
+				linksObj.style.display = "none";
+			} else {
+				linksObj.style.display = "block";
+			}
 		}

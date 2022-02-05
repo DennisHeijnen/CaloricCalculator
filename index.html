@@ -9,10 +9,11 @@
 	<meta name="keywords" content="Calories, Caloric intake, fitness, gym, bulk, cut">
 	<meta name="robots" content="index">
 	<meta name="author" content="Dennis Heijnen">
-	
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -21,9 +22,13 @@
 			<a href="index.html">Caloric Calculator</a>
 		</div>
 
-		<div class="topnav-right">
+		<div id="mobile-links" class="topnav-right">
 			<a href="about.html">About</a>
-			<a href="contact.html">Contact</a>
+			<a href="contact.html">Feedback</a>
+		</div>
+
+		<div class="hamburger-menu">
+			<a href="javascript:void(0);" onclick="showMenu()"><i class="fa fa-bars"></i></a>
 		</div>
 	</div>
 
@@ -51,10 +56,10 @@
 
 			<label for="physicalActivityLevel">Activity level:</label>
 			<select id="physicalActivityLevel" name="physicalActivityLevel">
-				<option id="one" value="one">Sedentair</option>
-				<option id="two" value="two">Beetje actief</option>
-				<option id="three" value="three">Actief</option>
-				<option id="four" value="four">Zeer actief</option>
+				<option id="one" value="one">Sedentary</option>
+				<option id="two" value="two">Low active</option>
+				<option id="three" value="three">Active</option>
+				<option id="four" value="four">Very active</option>
 			</select>
 
 
