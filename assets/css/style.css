@@ -1,6 +1,6 @@
 		html { 
-		  background: url(../img/background.jpg);
-		  height: 100%; 
+		  background: url(../img/background.JPG);
+		  min-height: 100vh;
 		  background-position: center;
 		  background-repeat: no-repeat;
 		  background-size: cover;
@@ -54,7 +54,8 @@
 
 		.input-form-container, .output-form-container {
 			margin: auto;
-			margin-top: 20px;
+			margin-top: 25px;
+			margin-bottom: 25px;
 			border-radius: 5px;
 			background-color: black;
 			color: #fff;
@@ -67,6 +68,7 @@
 		}
 
 		input[type=text], select, textarea {
+			-webkit-appearance: none;
 			width: 100%;
 			padding: 12px 20px;
 			margin: 8px 0;
@@ -79,6 +81,7 @@
 		}
 
 		input[type=button] {
+			-webkit-appearance: none;
 			width: 50%;
 			/*background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);*/
 			background-color: #f1bb4e;
@@ -116,8 +119,6 @@
 		@media screen and (max-width: 600px) {
 			html {
    				background-attachment: fixed;
-    			min-height: 100vh; 
-    			height: auto;
 			}
 
 			.input-form-container, .output-form-container {
