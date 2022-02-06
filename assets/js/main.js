@@ -1,3 +1,6 @@
+		var telegram_token = config.TELEGRAM_BOT_TOKEN;
+		var chat_token = config.CHAT_ID;
+
 		function caloricCalculator() {
 			//Define input variables
 			var sexObj = document.getElementById('sex').value;
@@ -211,14 +214,26 @@
 
 		function submitForm() {
 			var fnameObj = document.getElementById("fname").value;
-			var lnameObj = document.getElementById("lname").value;
+			var mailObj = document.getElementById("mail").value;
 			var subjectObj = document.getElementById("subject").value;
 
 			//Error handling
-			if(fnameObj.length === 0 || lnameObj.length === 0 || subjectObj.length === 0) {
+			if(fnameObj.length === 0 || mailObj.length === 0 || subjectObj.length === 0) {
 		        alert('Input forgotten');
 		        return;
 		    };
+
+		    //Send feedback to Telegram
+		    var feedback_message = "Name: " + fnameObj + "\nMail: " + mailObj + "\nSubject: " + subjectObj;
+		    feedback_message = encodeURI(feedback_message);
+		    var api_url = "https://api.telegram.org/bot"+telegram_token+"/sendMessage?chat_id="+chat_token+"&text="+feedback_message+"&disable_web_page_preview=true";
+					
+			$.ajax({
+				url: api_url,
+				datatype: 'json',
+			}).done(function(reply){
+				console.log(reply);
+			});
 
 		    //Show thank you message
 		    document.getElementById("input-form").style.display = 'none';

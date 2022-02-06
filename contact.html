@@ -10,6 +10,8 @@
 	<meta name="robots" content="index">
 	<meta name="author" content="Dennis Heijnen">
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -39,11 +41,11 @@
 		</div>
 
 		<form id="feedbackForm">
-		    <label for="fname">First Name</label>
-		    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+		    <label for="fname">Name</label>
+		    <input type="text" id="fname" name="fname" placeholder="Your name..">
 
-		    <label for="lname">Last Name</label>
-		    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+		    <label for="mail">Mail</label>
+		    <input type="text" id="mail" name="mail" placeholder="arnold.schwarzenegger@gmail.com">
 
 		    <label for="subject">Subject</label>
 		    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
@@ -62,6 +64,7 @@
 		<p>You're feedback is submitted succesfully. We appreciate your feedback and will come back to you as soon as possible.</p>
 	</div>
 
+	<script src="assets/js/config.js"></script>
 	<script src="assets/js/main.js"></script>
 </body>
 </html>
