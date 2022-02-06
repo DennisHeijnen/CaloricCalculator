@@ -24,7 +24,9 @@
 	<div class="topnav">
 		<div class="topnav-title">
 			<a href="index.html">
-				Caloric Calculator
+				<img src="assets/img/logo.PNG">
+				<!-- <img src="assets/img/gym-dumbbell.svg" class="color-filter"/>
+				<span class="web-title">Caloric Calculator</span> -->
 			</a>
 		</div>
 
@@ -39,21 +41,26 @@
 	</div>
 
 	<div id="input-form" class="input-form-container">
+		<div class="title-container">
+			<span>Caloric Calculator</span>
+		</div>
 		<form>
 			<label for="sex">Sex:</label>
-			<select id="sex" name="sex">
+			<select id="sex" name="sex" required>
+				<option value="" disabled selected hidden>Select your option</option>
 				<option id="male" value="Male">Male</option>
 				<option id="female" value="Female">Female</option>
 			</select>
 
 			<label for="bodyWeight">Weight:</label>
-			<input type="text" id="bodyWeight"/>
+			<input type="text" id="bodyWeight" placeholder="75"/>
 
 			<label for="fatPercentage">Fat percentage:</label>
-			<input type="text" id="fatPercentage"/>
+			<input type="text" id="fatPercentage" placeholder="12"/>
 
 			<label for="thermicEffectFood">TEF:</label>
-			<select id="thermicEffectFood" name="thermicEffectFood">
+			<select id="thermicEffectFood" name="thermicEffectFood" required>
+				<option value="" disabled selected hidden>Select your option</option>
 				<option id="ten" value="ten">10%</option>
 				<option id="fifteen" value="fifteen">15%</option>
 				<option id="twenty" value="twenty">20%</option>
@@ -61,7 +68,8 @@
 			</select>
 
 			<label for="physicalActivityLevel">Activity level:</label>
-			<select id="physicalActivityLevel" name="physicalActivityLevel">
+			<select id="physicalActivityLevel" name="physicalActivityLevel" required>
+				<option value="" disabled selected hidden>Select your option</option>
 				<option id="one" value="one">Sedentary</option>
 				<option id="two" value="two">Low active</option>
 				<option id="three" value="three">Active</option>
@@ -70,13 +78,14 @@
 
 
 			<label for="trainingDays">Training days:</label>
-			<input type="text" id="trainingDays"/><br>
+			<input type="text" id="trainingDays" placeholder="4"/><br>
 
 			<label for="trainingTime">Minutes per training:</label>
-			<input type="text" id="trainingTime">
+			<input type="text" id="trainingTime" placeholder="40">
 
 			<label for="experienceLevel">Experience level:</label>
-			<select id="experienceLevel" name="experienceLevel">
+			<select id="experienceLevel" name="experienceLevel" required>
+				<option value="" disabled selected hidden>Select your option</option>
 				<option id="beginner" value="beginner">Beginner</option>
 				<option id="intermediate" value="intermediate">Intermediate</option>
 				<option id="advanced" value="advanced">Advanced</option>
