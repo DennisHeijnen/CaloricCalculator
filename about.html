@@ -45,14 +45,19 @@
 			<p>Individual athletes are ofcourse allowed to make use of the calculator. However, it should be noted that one should have extensive knowledge about the different variables used in this calculator. Moreover, it might be hard to be objective about one's own state of physique. Therefore, we recommend to let a certified personal trainer use the calculator for you.</p>
 
 			<div class="btn-container">
-				<a href="index.html">
-					<input type="button" value="Let's calculate!">
-				</a>
+				<button type="button" class="btn btn-tertiary btn-block" onclick="return returnToHomePage();">
+					<span class="button-text">Let's calculate!</span>
+					<div class="icon d-flex align-items-center justify-content-center">
+						<ion-icon name="calculator-outline"></ion-icon>
+					</div>
+				</button>
 			</div>
 		</div>
 	</div>
 
 	<script src="assets/js/config.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

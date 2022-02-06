@@ -23,7 +23,9 @@
 <body>
 	<div class="topnav">
 		<div class="topnav-title">
-			<a href="index.html">Caloric Calculator</a>
+			<a href="index.html">
+				Caloric Calculator
+			</a>
 		</div>
 
 		<div id="mobile-links" class="topnav-right">
@@ -81,7 +83,12 @@
 			</select>
 
 			<div class="btn-container">
-				<input type="button" value="Calculate" onclick="return caloricCalculator();">
+				<button type="button" class="btn btn-tertiary btn-block" onclick="return caloricCalculator();">
+					<span class="button-text">Calculate</span>
+					<div class="icon d-flex align-items-center justify-content-center">
+						<ion-icon name="calculator-outline"></ion-icon>
+					</div>
+				</button>
 			</div>
 		</form>
 	</div>
@@ -106,11 +113,18 @@
 			<span id="fatIntakeBulk"></span><br>
 		</div>
 		<div class="btn-container">
-			<input type="button" value="Re-calculate" onclick="return returnToHomePage();">
+			<button type="button" class="btn btn-tertiary btn-block" onclick="return returnToHomePage();">
+				<span class="button-text">Re-calculate</span>
+				<div class="icon d-flex align-items-center justify-content-center">
+					<ion-icon name="calculator-outline"></ion-icon>
+				</div>
+			</button>
 		</div>
 	</div>
 
 	<script src="assets/js/config.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

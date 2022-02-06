@@ -51,7 +51,13 @@
 		    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
 		    <div class="btn-container">
-				<input type="button" value="Submit" onclick="submitForm()">
+				<!-- <input type="button" value="Submit" onclick="submitForm()"> -->
+				<button type="button" class="btn btn-tertiary btn-block" onclick="return submitForm();">
+					<span class="button-text">Submit</span>
+					<div class="icon d-flex align-items-center justify-content-center">
+						<ion-icon name="paper-plane-outline"></ion-icon>
+					</div>
+				</button>
 			</div>
 		</form>
 	</div>
@@ -66,5 +72,7 @@
 
 	<script src="assets/js/config.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
