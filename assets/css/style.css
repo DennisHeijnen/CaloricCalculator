@@ -27,12 +27,12 @@
 		    transform: translateY(-50%);
 		}
 
-		/*.topnav-title span {
+		.topnav-title span {
 			color: #e2c275;
 			font-size: 1.75em;
 			margin-left: 5px;
 		}
-*/
+
 		.topnav a {
 		  	float: left;
 		  	color: #f2f2f2;
@@ -63,11 +63,11 @@
 			display: none;
 		}
 
-      /*.color-filter {
+      	.color-filter {
 			filter: invert(96%) sepia(99%) saturate(740%) hue-rotate(317deg) brightness(92%) contrast(92%);
 			width: 30px;
 
-		}*/
+		}
 
 		.input-form-container, .output-form-container {
 			margin: auto;
@@ -130,6 +130,15 @@
 			margin-top: 30px;
 		}
 
+		.service-list {
+			display: table-cell;
+		}
+
+		.service-list ul {
+			list-style-type: none;
+			padding-left: 16px;
+		}
+
 		.calculationClass {
 			margin-bottom: 20px;
 		}
@@ -144,6 +153,12 @@
 			font-weight: bold;
 			text-align: center;
 			margin-bottom: 20px;
+		}
+
+		.option-container {
+			text-align: center;
+			margin-top: 20px;
+			margin-bottom: 10px;
 		}
 
 		.btn-container {

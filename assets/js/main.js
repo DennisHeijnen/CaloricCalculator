@@ -138,7 +138,7 @@
 					bulkCaloricIntakeScoreUpper = Math.round(1.07 * caloricEE);
 				}
 				if (experienceLevelObj == 'advanced') {
-					bulkCaloricIntakeObj.innerHTML = 'Bulk: between ' + Math.round(1.01 * caloricEE) + ' and ' + Math.round(1.03 * caloricEE);
+					bulkCaloricIntakeObj.innerHTML = 'Bulk: ' + Math.round(1.01 * caloricEE) + ' - ' + Math.round(1.03 * caloricEE);
 					bulkCaloricIntakeScoreLower = Math.round(1.01 * caloricEE);
 					bulkCaloricIntakeScoreUpper = Math.round(1.03 * caloricEE);
 				}
@@ -149,10 +149,10 @@
 			maintenanceLevelObj.innerHTML = '<span class="stateHeader">Maintenance</span><br> Calories: ' + caloricEE + ' kCal';
 
 			//Print caloric cut intake
-			cutCaloricIntakeObj.innerHTML = '<span class="stateHeader">Cut</span><br> Calories: between ' + cutCaloricIntakeScoreLower + ' and ' + cutCaloricIntakeScoreUpper + ' kCal';
+			cutCaloricIntakeObj.innerHTML = '<span class="stateHeader">Cut</span><br> Calories: ' + cutCaloricIntakeScoreLower + ' - ' + cutCaloricIntakeScoreUpper + ' kCal';
 
 			//Print caloric bulk intake
-			bulkCaloricIntakeObj.innerHTML = '<span class="stateHeader">Bulk</span><br> Calories: between ' + bulkCaloricIntakeScoreLower + ' and ' + bulkCaloricIntakeScoreUpper + ' kCal';
+			bulkCaloricIntakeObj.innerHTML = '<span class="stateHeader">Bulk</span><br> Calories: ' + bulkCaloricIntakeScoreLower + ' - ' + bulkCaloricIntakeScoreUpper + ' kCal';
 
 
 			//Calculate maintenance macro's
@@ -195,13 +195,13 @@
 
 			//Print cut macro's
 			proteinIntakeCutObj.innerHTML = 'Protein: ' + Math.round(proteinIntakeScoreCut) + ' gram';
-			fatIntakeCutObj.innerHTML = 'Fat: between ' + Math.round(fatIntakeScoreCutLower) +  ' and ' + Math.round(fatIntakeScoreCutUpper) + ' gram';
-			carbohydrateIntakeCutObj.innerHTML = 'Carbohydrates: between ' + Math.round(carbohydrateIntakeScoreCutLower)  + ' and ' + Math.round(carbohydrateIntakeScoreCutUpper) + ' gram';
+			fatIntakeCutObj.innerHTML = 'Fat: ' + Math.round(fatIntakeScoreCutLower) +  ' - ' + Math.round(fatIntakeScoreCutUpper) + ' gram';
+			carbohydrateIntakeCutObj.innerHTML = 'Carbohydrates: ' + Math.round(carbohydrateIntakeScoreCutLower)  + ' - ' + Math.round(carbohydrateIntakeScoreCutUpper) + ' gram';
 
 			//Print bulk macro's
 			proteinIntakeBulkObj.innerHTML = 'Protein: ' + Math.round(proteinIntakeScoreBulk) + ' gram';
-			fatIntakeBulkObj.innerHTML = 'Fat: between ' + Math.round(fatIntakeScoreBulkLower) +  ' and ' + Math.round(fatIntakeScoreBulkUpper) + ' gram';
-			carbohydrateIntakeBulkObj.innerHTML = 'Carbohydrates: between ' + Math.round(carbohydrateIntakeScoreBulkLower)  + ' and ' + Math.round(carbohydrateIntakeScoreBulkUpper) + ' gram';
+			fatIntakeBulkObj.innerHTML = 'Fat: ' + Math.round(fatIntakeScoreBulkLower) +  ' - ' + Math.round(fatIntakeScoreBulkUpper) + ' gram';
+			carbohydrateIntakeBulkObj.innerHTML = 'Carbohydrates: ' + Math.round(carbohydrateIntakeScoreBulkLower)  + ' - ' + Math.round(carbohydrateIntakeScoreBulkUpper) + ' gram';
 
 			document.getElementById("input-form").style.display = 'none';
 			document.getElementById("output-form").style.display = 'block';

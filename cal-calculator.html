@@ -31,8 +31,8 @@
 		</div>
 
 		<div id="mobile-links" class="topnav-right">
-			<a href="#">Login</a>
-			<a href="#">Sign-up</a>
+			<a href="about.html">About</a>
+			<a href="contact.html">Feedback</a>
 		</div>
 
 		<div class="hamburger-menu">
@@ -42,56 +42,64 @@
 
 	<div id="input-form" class="input-form-container">
 		<div class="title-container">
-			<span>Fitness-as-a-Service</span>
+			<span>Caloric Calculator</span>
 		</div>
-		<div class="text-container">
-			<p>Fitness-as-a-Service (FaaS) will offer online customized help, information, tools for your fitness journey! All our coaches have followed the Henselmans PT Course. Therefore, they are certified personal trainers and follow an evidence based approach. At this moment, we offer the following services: </p>
+		<form>
+			<label for="sex">Sex:</label>
+			<select id="sex" name="sex" required>
+				<option value="" disabled selected hidden>Select your option</option>
+				<option id="male" value="Male">Male</option>
+				<option id="female" value="Female">Female</option>
+			</select>
 
-			<div class="service-container">
-				<div class="service-list">
-					<ul>
-						<li>🥦</li>
-						<li>💪 </li>
-						<li>🏋️‍♂</li>
-						<li>📽</li>
-						<li>📆</li>
-						<li>🍗</li>
-						<li>📕</li>
-					</ul>
-				</div>
-				<div class="service-list">
-					<ul>
-						<li>Caloric Calculator</li>
-						<li>1RM Calculator</li>
-						<li>Online coaching</li>
-						<li>Exercise video feedback</li>
-						<li>Customized training routine</li>
-						<li>Customized meal scheme</li>
-						<li>Cookbook</li>
-					</ul>
-				</div>
-			</div>
+			<label for="bodyWeight">Weight:</label>
+			<input type="text" id="bodyWeight" placeholder="75"/>
+
+			<label for="fatPercentage">Fat percentage:</label>
+			<input type="text" id="fatPercentage" placeholder="12"/>
+
+			<label for="thermicEffectFood">TEF:</label>
+			<select id="thermicEffectFood" name="thermicEffectFood" required>
+				<option value="" disabled selected hidden>Select your option</option>
+				<option id="ten" value="ten">10%</option>
+				<option id="fifteen" value="fifteen">15%</option>
+				<option id="twenty" value="twenty">20%</option>
+				<option id="twentyfive" value="twentyfive">25%</option>
+			</select>
+
+			<label for="physicalActivityLevel">Activity level:</label>
+			<select id="physicalActivityLevel" name="physicalActivityLevel" required>
+				<option value="" disabled selected hidden>Select your option</option>
+				<option id="one" value="one">Sedentary</option>
+				<option id="two" value="two">Low active</option>
+				<option id="three" value="three">Active</option>
+				<option id="four" value="four">Very active</option>
+			</select>
+
+
+			<label for="trainingDays">Training days:</label>
+			<input type="text" id="trainingDays" placeholder="4"/><br>
+
+			<label for="trainingTime">Minutes per training:</label>
+			<input type="text" id="trainingTime" placeholder="40">
+
+			<label for="experienceLevel">Experience level:</label>
+			<select id="experienceLevel" name="experienceLevel" required>
+				<option value="" disabled selected hidden>Select your option</option>
+				<option id="beginner" value="beginner">Beginner</option>
+				<option id="intermediate" value="intermediate">Intermediate</option>
+				<option id="advanced" value="advanced">Advanced</option>
+			</select>
 
 			<div class="btn-container">
-				<button type="button" class="btn btn-tertiary btn-block" onclick="return returnToHomePage();">
-					<span class="button-text">Login</span>
+				<button type="button" class="btn btn-tertiary btn-block" onclick="return caloricCalculator();">
+					<span class="button-text">Calculate</span>
 					<div class="icon d-flex align-items-center justify-content-center">
-						<ion-icon name="log-in-outline"></ion-icon>
+						<ion-icon name="calculator-outline"></ion-icon>
 					</div>
 				</button>
 			</div>
-
-			<div class="option-container">or</div>
-
-			<div class="btn-container">
-				<button type="button" class="btn btn-tertiary btn-block" onclick="return returnToHomePage();">
-					<span class="button-text">Sign-up</span>
-					<div class="icon d-flex align-items-center justify-content-center">
-						<ion-icon name="person-add-outline"></ion-icon>
-					</div>
-				</button>
-			</div>
-		</div>
+		</form>
 	</div>
 
 	<div id="output-form" class="output-form-container">
