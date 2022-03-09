@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CaloricCalculator</title>
+	<title>Fitness-as-a-Service</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
@@ -75,7 +75,7 @@
 			</div>
 
 			<div class="btn-container">
-				<button type="button" class="btn btn-tertiary btn-block" onclick="return returnToHomePage();">
+				<button type="button" class="btn btn-tertiary btn-block" onclick="window.location = 'login.html'">
 					<span class="button-text">Login</span>
 					<div class="icon d-flex align-items-center justify-content-center">
 						<ion-icon name="log-in-outline"></ion-icon>
@@ -86,42 +86,13 @@
 			<div class="option-container">or</div>
 
 			<div class="btn-container">
-				<button type="button" class="btn btn-tertiary btn-block" onclick="return returnToHomePage();">
+				<button type="button" class="btn btn-tertiary btn-block" onclick="window.location = 'signup.html'">
 					<span class="button-text">Sign-up</span>
 					<div class="icon d-flex align-items-center justify-content-center">
 						<ion-icon name="person-add-outline"></ion-icon>
 					</div>
 				</button>
 			</div>
-		</div>
-	</div>
-
-	<div id="output-form" class="output-form-container">
-		<div class="calculationClass">
-			<span id="maintenanceLevel"></span><br>
-			<span id="proteinIntakeMaintenance"></span><br>
-			<span id="carbohydrateIntakeMaintenance"></span><br>
-			<span id="fatIntakeMaintenance"></span><br>
-		</div>
-		<div class="calculationClass">
-			<span id="cutCaloricIntake"></span><br>
-			<span id="proteinIntakeCut"></span><br>
-			<span id="carbohydrateIntakeCut"></span><br>
-			<span id="fatIntakeCut"></span><br>
-		</div>
-		<div class="calculationClass">
-			<span id="bulkCaloricIntake"></span><br>
-			<span id="proteinIntakeBulk"></span><br>
-			<span id="carbohydrateIntakeBulk"></span><br>
-			<span id="fatIntakeBulk"></span><br>
-		</div>
-		<div class="btn-container">
-			<button type="button" class="btn btn-tertiary btn-block" onclick="return returnToHomePage();">
-				<span class="button-text">Re-calculate</span>
-				<div class="icon d-flex align-items-center justify-content-center">
-					<ion-icon name="calculator-outline"></ion-icon>
-				</div>
-			</button>
 		</div>
 	</div>
 

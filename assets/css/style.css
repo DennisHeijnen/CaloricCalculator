@@ -84,6 +84,11 @@
 			display: none;
 		}
 
+		.twitterLink {
+			color: #e2c275;
+			text-decoration: none;
+		}
+
 		select {
 			-webkit-appearance: none;
 			width: 100%;
@@ -105,7 +110,7 @@
 			color: #e2c275;
 		}
 
-		input[type=text], textarea {
+		input[type=text], input[type=password], textarea {
 			-webkit-appearance: none;
 			width: 100%;
 			padding: 12px 20px;
@@ -119,7 +124,7 @@
 			margin-bottom: 30px;
 		}
 
-		input[type=text], select:focus, textarea:focus {
+		input[type=text], input[type=password], select:focus, textarea:focus {
 			border: none;
 			border-bottom: 2px solid #fff;
 			outline: none;
@@ -129,6 +134,7 @@
 		.text-container .btn-container {
 			margin-top: 30px;
 		}
+
 
 		.service-list {
 			display: table-cell;

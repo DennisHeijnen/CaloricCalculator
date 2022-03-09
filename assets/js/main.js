@@ -240,6 +240,22 @@
 			document.getElementById("output-form").style.display = 'block';
 		}
 
+		function submitSignup() {
+			var mailObj = document.getElementById("mail").value;
+			var passwordObj = document.getElementById("password").value;
+			var confirmPasswordObj = document.getElementById("confirmPassword").value;
+
+			//Error handling
+			if(mailObj.length === 0 || passwordObj.length === 0 || confirmPasswordObj.length === 0) {
+		        alert('Input forgotten');
+		        return;
+		    };
+
+		    //Show succesful registered message
+		    document.getElementById("input-form").style.display = 'none';
+			document.getElementById("output-form").style.display = 'block';
+		}
+
 		function showMenu() {
 			var linksObj = document.getElementById("mobile-links");
 			if (linksObj.style.display === 'block') {
