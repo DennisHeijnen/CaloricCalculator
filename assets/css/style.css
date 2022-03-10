@@ -89,6 +89,24 @@
 			text-decoration: none;
 		}
 
+		.serviceLink {
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.serviceLink:hover {
+			color: #e2c275;
+			text-decoration: none;
+		}
+
+		ion-icon[name="person-circle-outline"] {
+			font-size: 32px;
+		}
+
+		.locked {
+			color: #888888;
+		}
+
 		select {
 			-webkit-appearance: none;
 			width: 100%;

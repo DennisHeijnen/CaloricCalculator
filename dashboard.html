@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Feedback</title>
+	<title>Fitness-as-a-Service</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
@@ -11,6 +11,7 @@
 	<meta name="author" content="Dennis Heijnen">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,18 +23,20 @@
 <body>
 	<div class="topnav">
 		<div class="topnav-title">
-			<a href="dashboard.html">
-				<img src="assets/img/logo.PNG">
-				<!-- <img src="assets/img/gym-dumbbell.svg" class="color-filter"/>
-				<span class="web-title">Caloric Calculator</span> -->
+			<a href="index.html">
+			<!-- <img src="assets/img/logo.PNG"> -->
+			 <img src="assets/img/gym-dumbbell.svg" class="color-filter"/>
+				<span class="web-title">Fitness-as-a-Service</span>
 			</a>
 		</div>
 
 		<div id="mobile-links" class="topnav-right">
+			<a href="#">Services</a>
 			<a href="about.html">About</a>
-			<a href="contact.html" class="active">Feedback</a>
+			<a href="contact.html">Feedback</a>
+			<a href="account.html"><ion-icon name="person-circle-outline"></ion-icon></a>
 		</div>
-		
+
 		<div class="hamburger-menu">
 			<a href="javascript:void(0);" onclick="showMenu()"><i class="fa fa-bars"></i></a>
 		</div>
@@ -41,38 +44,41 @@
 
 	<div id="input-form" class="input-form-container">
 		<div class="title-container">
-			<span>Feedback</span>
+			<span>Fitness-as-a-Service</span>
 		</div>
 
-		<form id="feedbackForm">
-		    <label for="fname">Name</label>
-		    <input type="text" id="fname" name="fname" placeholder="Your name..">
+		<div class="text-container">
+			<p>Fitness-as-a-Service (FaaS) will offer online customized help, information, tools for your fitness journey! All our coaches have followed the Henselmans PT Course. Therefore, they are certified personal trainers and follow an evidence based approach. At this moment, we offer the following services: </p>
 
-		    <label for="mail">Mail</label>
-		    <input type="text" id="mail" name="mail" placeholder="arnold.schwarzenegger@gmail.com">
 
-		    <label for="subject">Subject</label>
-		    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-		    <div class="btn-container">
-				<!-- <input type="button" value="Submit" onclick="submitForm()"> -->
-				<button type="button" class="btn btn-tertiary btn-block" onclick="return submitForm();">
-					<span class="button-text">Submit</span>
-					<div class="icon d-flex align-items-center justify-content-center">
-						<ion-icon name="paper-plane-outline"></ion-icon>
-					</div>
-				</button>
+			<div class="service-container">
+				<div class="service-list">
+					<ul>
+						<li>🥦</li>
+						<li>💪 </li>
+						<li>🏋️‍♂</li>
+						<li>📽</li>
+						<li>📆</li>
+						<li>🍗</li>
+						<li>📕</li>
+					</ul>
+				</div>
+				<div class="service-list">
+					<ul>
+						<li><a href="cal-calculator.html" class="serviceLink">Caloric Calculator</a></li>
+						<li><a href="rm-calculator.html" class="serviceLink">1RM Calculator</a></li>
+						<li class="locked">Online coaching 🔒</li>
+						<li class="locked">Exercise video feedback 🔒</li>
+						<li class="locked">Customized training routine 🔒</li>
+						<li class="locked">Customized meal scheme 🔒</li>
+						<li class="locked">Cookbook 🔒</li>
+					</ul>
+				</div>
 			</div>
-		</form>
-	</div>
-
-	<div id="output-form" class="output-form-container">
-		<div class="title-container">
-			<span>Thank you!</span>
 		</div>
-
-		<p>You're feedback is submitted succesfully. We appreciate your feedback and will come back to you as soon as possible.</p>
 	</div>
+
+	<a target="_blank" rel="noopener" class="levelsio-by" href="https://twitter.com/dennisheijnen"><img src="assets/img/pf.JPG" /><p>by Dennis Heijnen</p></a>
 
 	<script src="assets/js/config.js"></script>
 	<script src="assets/js/main.js"></script>
